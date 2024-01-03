@@ -1,7 +1,6 @@
 <?php
-include_once('../includes/heater.php');
+include_once('../includes/head.php');
 include_once('../connection/connection.php');
-
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
     $bus_id = $_POST['bus_id'];
     $route_id = $_POST['route_id'];
