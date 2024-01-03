@@ -1,0 +1,22 @@
+<?php
+session_start();
+// Check if the user is logged in
+if (isset($_SESSION['email'])) {
+    // Display the user's name in the navbar
+    echo "Welcome, " . $_SESSION['name'];
+    // Add other navbar elements or links as needed
+} else {
+    // Redirect to the login page if the user is not logged in
+    header("Location: login.php");
+    exit();
+}
+?>
+
+
+https://www.youtube.com/playlist?list=PLAkMqlQoeMeggmlTJn8QLzOTohUYpHzGa
+
+
+https://www.youtube.com/playlist?list=PL0b6OzIxLPbzSyiC0PFaqeabe1aGhfrbW
+
+
+https://www.youtube.com/watch?v=YFlx1C8XwR0

@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#login{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("../images/im4.jpg");
+    background-size:cover ;
+}
+#login h2 {
+    text-align: center;
+    color: #ffffff;
+}
+#login h4{
+    color: azure;
+}
+#login form {
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(235, 233, 233, 0.2);
+    padding: 20px;
+    width: 300px;
+}
+#login label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+#login input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+#login input[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+}
+#login input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+#login .error {
+    color: #d9534f;
+    margin-top: 10px;
+}
+#sinup {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("../images/im12.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#sinup h2 {
+    text-align: center;
+    color: #333;
+}
+#sinup h4 {
+    color: azure;
+    font-weight: 800;
+    font-size: 800;
+}
+#sinup form {
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+}
+#sinup label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+#sinup input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+#sinup input[type="submit"] {
+    background-color:  #3498db;
+    color: #fff;
+    cursor: pointer;
+}
+#sinup input[type="submit"]:hover {
+    background-color:  #3498db;
+}
+#sinup .error {
+    color: #d9534f;
+    margin-top: 10px;
+}
+h4 a{
+    color: rgb(0, 255, 255);
+}
+
+.password-input-container {
+    position: relative;
+}
+
+ #password {
+    padding-right: 30px; 
+}
+
+ #eye {
+    position: absolute;
+    right: 10px; 
+    top: 35%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+#name{
+    text-transform: capitalize;
+}
+.error-message {
+    color: red;
+}
