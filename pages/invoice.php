@@ -1,5 +1,9 @@
 <?php
-
+session_start();
+if (!isset($_SESSION)) {
+    header("Location:../index.php");
+    exit();   
+}
 $seatNumbers = isset($_GET['seatNumbers']) ? $_GET['seatNumbers'] : '';
 $numberOfSeats = isset($_GET['numberOfSeats']) ? $_GET['numberOfSeats'] : '';
 $totalAmount = isset($_GET['totalAmount']) ? $_GET['totalAmount'] : '';

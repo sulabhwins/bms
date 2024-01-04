@@ -1,5 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION)) {
+    header("Location:../index.php");
+    exit();   
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +32,8 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        select, input[type="date"] {
+        select,
+        input[type="date"] {
             padding: 10px;
             margin: 10px;
             font-size: 16px;
@@ -69,26 +78,29 @@
         }
     </script>
 </head>
+
 <body>
     <form action="./selectbuses.php" method="post" onsubmit="return validateForm()">
         <h2>Bus Route Selection</h2>
         
         <label for="from">From:</label>
         <select id="from" name="from">
+        
             <?php
-                include_once('../connection/connection.php');
-                $sql="SELECT * FROM bms_route ";
-                $result=$conn->query($sql);
-                foreach($result as $row){
+            include_once('../connection/connection.php');
+            $sql = "SELECT * FROM bms_route ";
+            $result = $conn->query($sql);?>
+            <?php
+            foreach ($result as $row) {
             ?>
                 <option value="<?php echo $row['from_location']; ?>"><?php echo $row['from_location']; ?></option>
             <?php } ?>
         </select>
-        
+
         <label for="to">To:</label>
         <select id="to" name="to">
             <?php
-                foreach($result as $row){
+            foreach ($result as $row) {
             ?>
                 <option value="<?php echo $row['to_location']; ?>"><?php echo $row['to_location']; ?></option>
             <?php } ?>
@@ -97,10 +109,10 @@
         <label for="date">Date:</label>
         <select id="date" name="date">
             <?php
-                for ($i = 0; $i < 7; $i++) {
-                    $date = date('Y-m-d', strtotime("+$i days"));
-                    echo "<option value=\"$date\">$date</option>";
-                }
+            for ($i = 0; $i < 7; $i++) {
+                $date = date('Y-m-d', strtotime("+$i days"));
+                echo "<option value=\"$date\">$date</option>";
+            }
             ?>
         </select>
 
@@ -109,4 +121,5 @@
         <input type="submit" value="Submit">
     </form>
 </body>
+
 </html>

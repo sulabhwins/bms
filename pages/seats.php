@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION)) {
+    header("Location:../index.php");
+    exit();   
+}
 include_once('../includes/head.php');
 include_once('../connection/connection.php');
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
