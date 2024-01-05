@@ -13,21 +13,23 @@ if (!isset($_SESSION)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bus Route Selection</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
+    .selectRoute {
+    background-image: url(../assets/images/im1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+*{
+    padding: 0;margin: 0;
+}
 
         form {
             text-align: center;
-            background-color: #fff;
-            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -80,6 +82,9 @@ if (!isset($_SESSION)) {
 </head>
 
 <body>
+    <section class="selectRoute">
+
+   
     <form action="./selectbuses.php" method="post" onsubmit="return validateForm()">
         <h2>Bus Route Selection</h2>
         
@@ -120,6 +125,7 @@ if (!isset($_SESSION)) {
 
         <input type="submit" value="Submit">
     </form>
+    </section>
 </body>
 
 </html>

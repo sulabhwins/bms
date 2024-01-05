@@ -1,8 +1,15 @@
 <?php
-session_start();
-if(isset($_SESSION['email'])) {
-    session_destroy();
+// session_start();
+// if(isset($_SESSION)) {
+//     session_destroy();
     
-    echo "Session destroyed.";
-} 
+//     echo "Session destroyed.";
+// } 
+?>
+<?php
+session_start();
+$_SESSION = array();
+session_destroy();
+header("Location: ../index.php");
+exit();
 ?>

@@ -1,33 +1,42 @@
-    <?php
-    include_once('./connection/connection.php');
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-        $stmt = $conn->prepare("SELECT * FROM `bms_user` WHERE `email` = ?");
-        $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_assoc();
-        $stmt->close();
-        if ($user && password_verify($password, $user['password'])) {
-            // Set session variables
-            $_SESSION['email'] = $user['email'];
-            $_SESSION['name'] = $user['name'];
-            // Optional: Set other session variables as needed, e.g., $_SESSION['user_id'] = $user['id'];
-    
-            // Redirect to the next page
-            header("Location: ./pages/selectroot.php");
-            exit();
-        } else {
-            $loginError = "Please check your email and password.";
-        }
-    
+<?php
+include_once('./connection/connection.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    $stmt = $conn->prepare("SELECT * FROM `bms_user` WHERE `email` = ?");
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+    $stmt->close();
+
+    if ($user && password_verify($password, $user['password'])) {
+        session_start();
+        $_SESSION['email'] = $user['email'];
+        header("Location: ./pages/selectroot.php");
+        exit();
+    } else {
+        $loginError = "Incorrect email or password.";
     }
-    ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
+
+    $conn->close();
+}
+
+// Check if the session is set before displaying the login form
+session_start();
+if (isset($_SESSION['email'])) {
+    // Redirect to the next page if the session is set
+    header("Location: ./pages/selectroot.php");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Rest of your HTML code remains unchanged -->
+<head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login Page</title>
@@ -51,5 +60,5 @@
             </form>
         </section>
         <script src="./assets/js/eyeicon.js"></script>
-    </body>
-    </html>
+
+</html>
